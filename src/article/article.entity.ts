@@ -3,6 +3,7 @@ import slug from 'slug';
 
 import { User } from '../user/user.entity';
 import { Comment } from './comment.entity';
+import { Tagging } from '../tagging/tagging.entity';
 
 @Entity()
 export class Article implements IdEntity<Article> {
@@ -28,8 +29,8 @@ export class Article implements IdEntity<Article> {
   @Property({ onUpdate: () => new Date() })
   updatedAt = new Date();
 
-  @Property() // TODO 'simple-array'?
-  tagList: string[] = [];
+  @OneToMany(()=>Tagging, t => t.article)
+  tags = new Collection<Tagging>(this)
 
   @ManyToOne()
   author: User;

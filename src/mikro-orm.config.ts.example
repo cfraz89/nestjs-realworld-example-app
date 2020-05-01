@@ -3,6 +3,7 @@ import { Article } from './article/article.entity';
 import { Comment } from './article/comment.entity';
 import { User } from './user/user.entity';
 import { Tag } from './tag/tag.entity';
+import { Tagging } from './tagging/tagging.entity';
 
 const config = {
   type: 'mysql',
@@ -11,7 +12,7 @@ const config = {
   username: 'root',
   password: '',
   dbName: 'nestjsrealworld',
-  entities: [Article, Comment, User, Tag],
+  entities: [Article, Comment, User, Tag, Tagging],
   entitiesDirsTs: ['src'],
   debug: true,
 } as Options;

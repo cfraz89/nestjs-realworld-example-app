@@ -144,7 +144,6 @@ export class ArticleService {
   async create(userId: number, dto: CreateArticleDto) {
     const user = await this.userRepository.findOne({ id: userId }, ['followers', 'favorites', 'articles']);
     const article = new Article(user, dto.title, dto.description, dto.body);
-    article.tagList.push(...dto.tagList);
     user.articles.add(article);
     await this.userRepository.flush();
 
